@@ -91,7 +91,7 @@
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-        <h2>About</h2>
+        <h2>Password Generator</h2>
         <ol>
           <li><a href="index.html">Home</a></li>
           <li>Password Generator</li>
@@ -99,6 +99,38 @@
 
       </div>
     </div><!-- End Breadcrumbs -->
+    
+<!-- ======= Password Generator Section ======= -->
+<section id="password-gen" class="stats-counter section-bg">
+  <div class="container">
+    <button onclick="generatePassword(20)">Click to generate secure password</button>
+    <input type="text" id="password-output" readonly>
+    <button onclick="copyPassword()">Copy</button>
+  </div>
+</section>
+
+<script>
+  function generatePassword(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    document.getElementById('password-output').value = result;
+  }
+
+  function copyPassword() {
+    const passwordOutput = document.getElementById('password-output');
+    passwordOutput.select();
+    passwordOutput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    alert('Password copied to clipboard!');
+  }
+</script>
+
 
     <!-- ======= Stats Counter Section ======= -->
     <section id="stats-counter" class="stats-counter section-bg">
